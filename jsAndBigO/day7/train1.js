@@ -79,9 +79,3 @@
     }
 
     console.log(twoSum(nums, 18));
-
-    // Bài 4 : contains duplicate 2 
-
-    // đề bài : cho mảng nums và số k -> kiểm tra 2 chỉ số index i và j có trong mảng mà thỏa mãn 2 điều kiện sau : nums[i] == nums[j] và |i - j|<= k
-
-    
