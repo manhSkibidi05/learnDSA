@@ -75,3 +75,20 @@ var longestPalindrome = function(s) {
     return s.substring(start, end + 1);
 };
 
+function intersect(nums1, nums2) {
+    const map = new Map();
+    // Đếm tần suất nums1
+    for (let num of nums1) {
+        map.set(num, (map.get(num) || 0) + 1);
+    }
+    const result = [];
+    // Duyệt nums2, nếu còn trong map thì thêm vào kết quả và giảm đếm
+    for (let num of nums2) {
+        if (map.has(num) && map.get(num) > 0) {
+            result.push(num);
+            map.set(num, map.get(num) - 1);
+        }
+    }
+    return result;
+}
+
