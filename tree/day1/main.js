@@ -34,6 +34,20 @@
         // + Inorder (left -> node -> right)
         // + Postorder (left -> right -> node)
 
-// 3. Bài tập bắt buộc 
+// 4. biểu diễn trong JS 
+    
+    class nodeTree{
+        constructor(value){
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+    }
 
+    const root = nodeTree(10);
+    root.left = nodeTree(5);
+    root.right = nodeTree(7);
+    root.left.left = nodeTree(3);
+    root.left.right = nodeTree(2);
+    root.right.right = nodeTree(9);
 
