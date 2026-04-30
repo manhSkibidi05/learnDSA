@@ -53,3 +53,4 @@
     // - cách xác định chiều cao (height) và độ sâu (depth) của 1 cây 
         // + độ sâu (depth) : xác định vị trí node hiện tại và tính số cạnh từ vị trí node đó đến root (node rễ ) -> node root có depth = 0;
         // + chiều cao (height) : xác định vị trí node hiện tại và tính số cạnh từ vị trí node đó đến leaf (node lá) sâu nhất dưới nó -> các node leaf có height = 0
+        

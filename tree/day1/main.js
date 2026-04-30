@@ -107,3 +107,16 @@
         postorder(root);
 
         // - ứng dụng : + tính chiều cao cây (cần biết chiều cao con trước) + xóa cây (xóa con trước rồi mới xóa cha) + tính toán biểu thức hậu tố (postfix)
+
+    // 4. Cách duyệt bằng stack 
+
+        function preorderIterative(root) {
+        if (!root) return;
+        const stack = [root];
+        while (stack.length) {
+            const node = stack.pop();
+            console.log(node.val);
+            if (node.right) stack.push(node.right);
+            if (node.left) stack.push(node.left);
+        }
+    }
