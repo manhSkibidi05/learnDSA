@@ -30,3 +30,28 @@
     console.log(arr1)
 
 
+// deepseek
+
+function preorder(root, result = []) {
+    if (!root) return result;
+    result.push(root.val);
+    preorder(root.left, result);
+    preorder(root.right, result);
+    return result;
+}
+
+function inorder(root, result = []) {
+    if (!root) return result;
+    inorder(root.left, result);
+    result.push(root.val);
+    inorder(root.right, result);
+    return result;
+}
+
+function postorder(root, result = []) {
+    if (!root) return result;
+    postorder(root.left, result);
+    postorder(root.right, result);
+    result.push(root.val);
+    return result;
+}
