@@ -18,40 +18,73 @@
     root1.left.left = new nodeTree(`D`);
     root1.left.right = new nodeTree(`E`);
 
-    function preorder(root , arr){
-        if(root === null) return;
+    function preorder(root , arr = []){
+        if(root === null) return arr;
         arr.push(root.value);
         preorder(root.left , arr);
         preorder(root.right , arr);
+        return arr;
     }
 
-    let arr1 = [];
-    preorder(root1 ,arr1 );
-    console.log(arr1)
+    console.log(preorder(root1));
+    
+    function inorder(root , arr = []){
+        if(root === null) return arr;
+        inorder(root.left , arr);
+        arr.push(root.value);
+        inorder(root.right , arr);
+        return arr;
+    }
 
+    console.log(inorder(root1));
 
-// deepseek
+    function postorder(root , arr = []){
+        if(root === null) return arr;
+        postorder(root.left ,arr);
+        postorder(root.right , arr);
+        arr.push(root.value);
+        return arr;
+    }
 
-function preorder(root, result = []) {
-    if (!root) return result;
-    result.push(root.val);
-    preorder(root.left, result);
-    preorder(root.right, result);
-    return result;
-}
+    console.log(postorder(root1));
 
-function inorder(root, result = []) {
-    if (!root) return result;
-    inorder(root.left, result);
-    result.push(root.val);
-    inorder(root.right, result);
-    return result;
-}
+// Bài 2 : tìm node thứ k theo thứ tự inorder 
 
-function postorder(root, result = []) {
-    if (!root) return result;
-    postorder(root.left, result);
-    postorder(root.right, result);
-    result.push(root.val);
-    return result;
-}
+// Đề bài : cho 1 cây nhị phân tìm kiếm (BST) và số nguyên k -> tìm giá trị tại node thứ k khi duyệt cây = inorder
+    const root2 = new nodeTree(5);
+    root2.left = new nodeTree(3);
+    root2.right = new nodeTree(6);
+    root2.left.left = new nodeTree(2);
+    root2.left.right = new nodeTree(4);
+
+    function inorderFindK(root , k , count = 0 , result = 0){
+        if(root === null) return;
+        inorderFindK(root.left , k , count , result);
+        count++;
+        inorderFindK(root.right , k , count , result);
+        if(count === k){
+            result = root.value;
+        }
+        return result;
+    }
+
+    console.log(inorderFindK(root2 , 3))
+
+    // AI
+
+    var kthSmallest = function(root, k) {
+        let count = 0;
+        let result = null;
+        
+        function dfs(node) {
+            if (!node || result !== null) return;
+            dfs(node.left);
+            count++;
+            if (count === k) result = node.val;
+            dfs(node.right);
+        }
+        
+        dfs(root);
+        return result;
+    };
+

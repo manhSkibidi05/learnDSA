@@ -1,32 +1,62 @@
-// Lý thuyết cơ bản về cây 
+// Cấu trúc dữ liệu : Cây 
 
-    // - cây là cấu trúc dữ liệu phi tuyến tính mỗi phần tử lưu trữ dưới dạng 1 node (chứa dữ liệu và có thể chứa con trỏ tới node con)
+    // - Cây : là cấu trúc dữ liệu phi tuyến tính dữ liệu được lưu trữ dưới dạng 1 node (1 node chứa dữ liệu và có thể chứa con trỏ tới cây con)
 
-    // - các thành phần trong 1 cây có 
-        // + root (rễ cây) : node đầu tiên không có cha
-        // + leaf (lá cây) : node có cha nhưng không có con -> node ở vị trí sâu nhất
-        // + edge (cạnh) : liên kết giữa 2 node 
-        // + height (chiều cao) :  là số cạnh từ node đang tính đến vị trí lá sâu nhất dưới nó -> vị trí lá sẽ có chiều cao = 0
-        // + depth (độ sâu) : là số cạnh từ node đang tính đến root -> vị trí root sẽ có độ sâu = 0
+    // - Các từ khóa thường được sử dụng đối với cây :
+        // + root (rễ) : là node đầu tiên của cây không có node cha
+        // + leaf (lá) : là node cuối cùng của cây không có node con
+        // + edge (cạnh) : là kết nối giữa 2 node
+        // + height (độ cao) : là khoảng cách giữa node hiện tại đối với lá sâu nhất dưới nó (khoảng cách tính bằng số cạnh)
+        // + depth (độ sâu) : là khoảng cách giữa node hiện tại đối với rễ của cây 
 
-    // - các dạng cây hay sử dụng :
-        // + cây nhị phân : cây này có node cố định có <= 2 con (left và right)
-        // + cây nhị phân tìm kiếm  
+    // - Các loại cây phổ biến :
+        // + cây nhị phân : Mỗi node trong cây nhị phân chỉ có <= 2 con 
 
-    // - vd : 1 node trong cây nhị phân
-    class nodeTree{
-        constructor(value){
-            this.value = value
-            this.left = null;
-            this.right = null;
+        class treeNode{
+            constructor(value){
+                this.value = value;
+                this.left = null;
+                this.right = null;
+            }
         }
-    }
-    // - vd : biều diễn cây nhị phân trong js
-    let root = new nodeTree(10);
-    root.left = new nodeTree(5);
-    root.right = new nodeTree(15);
-    root.left.left = new nodeTree(20);
-    root.left.right = new nodeTree(25);
-    root.right.left = new nodeTree(30);
+        const root1 = new treeNode(5);
+        root1.left = new treeNode(10);
+        root1.right = new treeNode(15);
+        root1.left.left = new treeNode(20);
+        root1.left.right = new treeNode(25);
 
+        // + các cách duyệt cây nhị phân : Duyệt cây theo chiều sâu Depth-first Search (DFS)
+            // - Duyệt cây theo chiều sâu là cách duyệt mà ở mỗi node sẽ cố gắng đi sâu xuống nhánh con trước khi quay lui để duyệt các nhánh khác 
+            // - Có 3 thứ tự duyệt chính : Preorder , Inorder , Postorder 
 
+            // + Preorder : trước khi duyệt tới node kế tiếp sẽ lấy giá trị tại node hiện tại trước 
+
+            function preorder(root){
+                if(root === null) return;
+                console.log(root.value);
+                preorder(root.left);
+                preorder(root.right);
+            }
+            preorder(root1);
+
+            // + Inorder: duyệt hết đến node trái là lá của cây rồi mới bắt đầu lấy giá trị tại node hiện tại 
+            // -> duyệt xong node bên trái của cây rồi mới lấy giá trị node hiện tại sau đó duyệt node bên phải 
+
+            function inorder(root){
+                if(root === null) return;
+                inorder(root.left);
+                console.log(root.value);
+                inorder(root.right);
+            }
+            inorder(root1);
+
+            // + Postorder: duyệt xong node bên trái và xong node bên phải rồi mới lấy giá trị của node hiện tại 
+            // -> duyệt hết node con rồi mới đến node cha 
+
+            function postorder(root){
+                if(root === null) return;
+                postorder(root.left);
+                postorder(root.right);
+                console.log(root.value);
+            }
+            postorder(root1);
