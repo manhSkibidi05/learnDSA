@@ -57,34 +57,49 @@
     root2.left.left = new nodeTree(2);
     root2.left.right = new nodeTree(4);
 
-    function inorderFindK(root , k , count = 0 , result = 0){
-        if(root === null) return;
-        inorderFindK(root.left , k , count , result);
-        count++;
-        inorderFindK(root.right , k , count , result);
-        if(count === k){
-            result = root.value;
+    function inorderFindK(root , k){
+        let count = 0;
+        let result = null;
+
+        function recursive(node){
+            if(node === null || result !== null) return;
+            recursive(node.left);
+            count++;
+            if(count === k) result = node.value;
+            recursive(node.right);
         }
+
+        recursive(root);
         return result;
     }
 
-    console.log(inorderFindK(root2 , 3))
+    console.log(inorderFindK(root2 , 5))
 
-    // AI
+// Bài 4 : inorder successor in BST 
 
-    var kthSmallest = function(root, k) {
-        let count = 0;
+// Đề bài : cho 1 BST và 1 node p -> tìm node kế tiếp của p trong thứ tự inorder 
+
+    function inorderFindNextP(root , p){
+        let check = false;
         let result = null;
-        
-        function dfs(node) {
-            if (!node || result !== null) return;
-            dfs(node.left);
-            count++;
-            if (count === k) result = node.val;
-            dfs(node.right);
+
+        function recursive(node){
+            if(node === null || result !== null) return;
+            recursive(node.left);
+            if(check) {
+                result = node.value;
+                check = false;
+            } 
+            if(p === node.value) check = true;
+            recursive(node.right);
         }
-        
-        dfs(root);
+        recursive(root);
         return result;
-    };
+    }
+
+    console.log(inorderFindNextP(root2,6));
+
+// Bài 5 : Tính giá trị biểu thức từ cây biểu thức (Postorder)
+
+// Đề bài : Cho cây biểu thức nhị phân 
 
