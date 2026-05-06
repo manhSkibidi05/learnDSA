@@ -101,5 +101,33 @@
 
 // Bài 5 : Tính giá trị biểu thức từ cây biểu thức (Postorder)
 
-// Đề bài : Cho cây biểu thức nhị phân 
+// Đề bài : cho cây biểu thức nhị phân (node lá là số , node trong là toán tử + - * /). Hãy tính giá trị biểu thức bằng duyệt cây postorder 
+
+    function caculator(root){
+        if(root === null) return 0;
+        if(!root.left && !root.right) return Number(root.value);
+        const leftValue = caculator(root.left);
+        const rightValue = caculator(root.right);
+        switch(root.value){
+            case `+` : return leftValue + rightValue;
+            case `-` : return leftValue - rightValue;
+            case `*` : return leftValue * rightValue;
+            case `/` : return leftValue / rightValue;
+            default : return 0;
+        }
+    }
+
+    const root3 = new nodeTree(`*`);
+    root3.left = new nodeTree(`+`);
+    root3.right = new nodeTree(6);
+    root3.left.left = new nodeTree(3);
+    root3.left.right = new nodeTree(4);
+
+    console.log(caculator(root3));
+
+
+    
+    
+
+
 
