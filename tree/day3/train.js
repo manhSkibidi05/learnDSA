@@ -41,22 +41,34 @@
         }
     }
 
+    // hàm thêm tất cả giá trị của node trên 1 cấp (1 hàng) vào 1 mảng rồi thêm mảng con vào 1 mảng lớn 
     function levelOrder(root){
+        // sử dụng hàng đợi
         let hangDoi = new Queue();
+        // thêm cây (root của cây : node đầu tiên của cây) vào hàng đợi 
         hangDoi.enqueue(root);
-
+        // hàm kết quả cuối
         let result = [];
+        // vòng lặp kết thúc khi hàng đợi rỗng
         while(!hangDoi.isEmpty()){
+            // kích thước hiện tại của hàng đợi
             let size = hangDoi.items.length;
+            // mảng con chứa các giá trị node trên 1 hàng 
             let newArr = [];
-
+            // dựa vào kích thước hiện tại của hàng đợi -> sẽ thêm số giá trị bằng với kích thước hiện tại 
+            // vì lúc này chỉ thêm vào mảng giá trị cùng hàng -> khi thêm bao nhiêu phần tử trong 1 lần duyệt thì xóa bấy nhiêu 
             for(let i = 1 ; i <= size ; i++){
+                // node = phần tử xóa 
                 let node = hangDoi.dequeue();
+                // thêm giá trị phần tử đó vào mảng con
                 newArr.push(node.value);
+                // kiểm tra null -> nếu không null thêm vào hàng đợi 
                 if(node.left) hangDoi.enqueue(node.left);
                 if(node.right) hangDoi.enqueue(node.right);
             }
+            // thêm mảng con vào mảng lơn
             result.push(newArr);
+            // trong 1 phiên duyệt xóa số phần tử = số phần tử thêm vào của phiên trước vì với 1 phiên sẽ thêm tất cả node con của node đó
         }
         return result;
     }
