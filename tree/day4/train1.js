@@ -48,6 +48,24 @@ class nodeTree{
 // Bài 3 : Insert into a Binary Search tree (leetCode #701) - trung bình 
 // Đề bài : Chèn 1 giá trị vào BST (giả sử giá trị chưa tồn tại ) -> trả về root sau khi chèn 
 
+    // hàm thêm 1 node mới vào cây nhị phân tìm kiếm 
     function insertValBST(root , val){
-        
+        // trường hợp đơn giản nhất -> cây không tồn tại trả về cây mới 
+        if(!root) return new nodeTree(val);
+        // nếu cây tồn tại -> dựa vào đặc tính của cây nhị phân tìm kiếm để tìm vị trí thêm phù hợp 
+        // khi giá trí node mới < node hiện tại 
+        if(val < root.value){
+            // chuyển sang node con trái -> vì node con trái luôn nhỏ hơn node hiện tại 
+            root.left = insertValBST(root.left , val);
+        }
+        // nếu node mới > node hiện tại
+        else{
+            // chuyển sang node con phải -> vì node con phải luôn lớn hơn node hiện tại 
+            root.right = insertValBST(root.right , val);
+        }
+        // gán node con bằng đệ quy -> kiểm tra node con này phù hợp không nếu có sẽ thêm giá trị vào node con này nếu không di chuyển tiếp 
+        // phù hợp khi node con = null và tmdk của cây nhị phân tìm kiếm -> cuối cùng trả về root sau khi thêm node 
+        return root;
     }
+    console.log(insertValBST(root2 , 8));
+    
