@@ -90,4 +90,10 @@
     rootB.left = new nodeTree(2);
     rootB.right = new nodeTree(7);
 
-    console.log(sameValuesBst(rootA , rootB))
+    console.log(sameValuesBst(rootA , rootB));
+
+    // ôn tập : cây nhị phân tìm kiếm 
+    // - cây nhị phân tìm kiếm (Binary search tree) BST : là 1 dạng cấu trúc dữ liệu được phát triển lên từ cây nhị phân với mỗi node có tối đa 2 con 
+    // nhưng có thêm quy tắc quan trọng : giá trị node hiện tại luôn nhỏ hơn giá trị node con phải và luôn lơn hơn giá trị node con trái 
+
+    // - Duyệt 1 cây BST theo inorder sẽ cho ra được 1 mảng sắp xếp theo từ bé đến lớn 
