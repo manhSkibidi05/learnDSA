@@ -66,6 +66,8 @@ class TreeNode {
     const q = root.right; // 1
     console.log(findLCA(root, p, q).val); // 3
 
+    
+
 
     // - Các bước xử lí khi gặp bài toán khó : 
     // 1. Hiểu rõ vấn đề - Đặt câu hỏi ngược 
@@ -77,7 +79,7 @@ class TreeNode {
         // -> nếu là cây thường đệ quy xử lý xong cây con trái rồi phải 
         // -> nếu có cấu trúc lặp lại nghĩ đến quy hoạch động hoặc memoization
     // 3. Liệt kê ra các trường hợp có thể xảy ra 
-        // + đây là bước quan trong nhất -> hãy vẽ các tình huống có thể xảy ra và xử lí từng cái 1 
+        // + đây là bước quan trọng nhất -> hãy vẽ các tình huống có thể xảy ra và xử lí từng cái 1 
     // 4. Viết code cho trường hợp đơn giản nhất rồi mở rộng
         // + bắt đầu từ trường hợp cơ bản (base case) 
         // + sau đó mở rộng dần lên các trường hợp phức tạp hơn 
