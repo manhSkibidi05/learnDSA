@@ -107,3 +107,11 @@
     root2.right = new nodeTree(7);
     console.log(isBST(root1));
     console.log(isBST(root2));
+
+// - Với bài toán cây nhị phân sử dụng đệ quy : 
+// + xác định yêu cầu đề bài đầu ra , đầu vào , cần các CTDL hay giải thuật bắt buộc hãy nêu tính chất của nó 
+// + xác định trường hợp đơn giản nhất đối với bài toán đó 
+// + xác định các trường hợp khác xảy ra 
+// + Hình dung khi đệ quy sẽ duyệt hết  cây con trái rồi mới đến cây con phải -> duyệt hết node con bên trái xong node con bên phải
+// + Kết hợp điều kiện khi đệ quy kết thúc 
+// + Tối ưu hóa bài toán 
