@@ -79,9 +79,9 @@
     }
     
     let root3 = new nodeTree(-10);
-    root3.left = new nodeTree(9)
-    root3.right = new nodeTree(20)
-    root3.right.left = new nodeTree(15)
-    root3.right.right = new nodeTree(7)
+    root3.left = new nodeTree(9);
+    root3.right = new nodeTree(20);
+    root3.right.left = new nodeTree(15);
+    root3.right.right = new nodeTree(7);
 
-    console.log(max(root3))
+    console.log(max(root3));
